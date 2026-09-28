@@ -29,6 +29,21 @@ changeTextButton.addEventListener("click", function() {
     animalText.textContent = "Penguins are the cutest animals.";
 });
 
+//Task 1_Bonus Tasks
+
+const addSentenceButton = document.querySelector("#addSentenceButton");
+
+addSentenceButton.addEventListener("click", function(){
+    animalText.textContent += "They live in very very cold places like, Antarctica!";
+});
+
+
+const ChangeBackgroundButton = document.querySelector("#ChangeBackgroundButton");
+
+ChangeBackgroundButton.addEventListener("click", function(){
+    document.body.style.backgroundColor = "lightblue";
+});
+
 // Task 2
 
 const animalContent = document.querySelector("#animalContent");
@@ -112,6 +127,12 @@ animalForm.addEventListener("submit", function(event){
     const locationInput = document.querySelector("#observationLocation");
     const dateInput = document.querySelector("#observationDate");
 
+
+    if(animalInput.value === "" || locationInput.value === "" || dateInput.value === ""){
+        alert("Please fill in all the fields.");
+        return;
+    }
+
     const animalTableBody = document.querySelector("#observationTableBody");
 
     const newRow = document.createElement("tr");
@@ -125,12 +146,46 @@ animalForm.addEventListener("submit", function(event){
     const dateCell = document.createElement("td");
     dateCell.textContent = dateInput.value;
 
-    newRow.append(animalCell,locationCell, dateCell);
+//Task 4_Bonus task
 
-    if(animalInput.value === "" || locationInput.value === "" || dateInput.value === ""){
-        alert("Please fill in all the fields.");
-        return;
-    }
+    const removeCell = document.createElement ("td");
+
+    const removeButton = document.createElement("button");
+    removeButton.textContent = "Remove";
+
+    removeButton.addEventListener("click" , function(){
+        newRow.remove ();
+    });
+
+    removeCell.append(removeButton);
+
+    newRow.append(animalCell,locationCell, dateCell, removeCell);
 
     animalTableBody.append(newRow);
+});
+
+//Bonus Tasks
+
+const moveImageButton = document.querySelector("#moveImageButton");
+
+moveImageButton.addEventListener("click", function () {
+    animalImageTask3.classList.add("image-move");
+});
+
+const fadeImageButton = document.querySelector("#fadeImageButton");
+
+fadeImageButton.addEventListener("click", function(){
+    animalImageTask3.classList.add("image-fade");
+});
+
+const removeImageButton = document.querySelector("#removeImageButton");
+
+removeImageButton.addEventListener("click", function(){
+    animalImageTask3.remove();
+});
+
+const listItems = document.querySelectorAll("li");
+
+listItems.forEach(function(item){
+    console.log(item.textContent);
 });

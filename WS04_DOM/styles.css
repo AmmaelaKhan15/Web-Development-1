@@ -169,3 +169,13 @@ tbody tr:nth-child(even) {
         width: 100%;
     }
 }
+
+.image-move {
+    transition: transform 0.5s;
+    transform: translateX(100px);
+}
+
+.image-fade{
+    opacity: 0;
+    transition: opacity 1s;
+}
